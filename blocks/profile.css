@@ -1,0 +1,43 @@
+.profile {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 0 auto;
+  padding-top: 5%;
+}
+
+.profile__image {
+  max-width: 20%;
+}
+
+.profile__info {
+  display: flex;
+}
+
+.profile__text-name {
+  display: block;
+  font-size: 42px;
+  line-height: 48px;
+  font-weight: 500;
+  padding-bottom: 2%;
+}
+
+.profile__text-description {
+  display: block;
+  font-size: 18px;
+  font-weight: 400;
+}
+
+.profile__button-edit {
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 0 0 20px 10px;
+}
+
+.profile__button-add {
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  padding-left: 15%;
+}
