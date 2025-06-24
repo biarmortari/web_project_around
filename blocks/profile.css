@@ -35,9 +35,99 @@
   padding: 0 0 20px 10px;
 }
 
+.profile__button-edit:hover {
+  opacity: 0.6;
+}
+
 .profile__button-add {
   background-color: transparent;
   border: none;
   cursor: pointer;
   padding-left: 15%;
+}
+
+.profile__button-add:hover {
+  opacity: 0.6;
+}
+
+@media screen and (max-width: 1024px) {
+  .profile__image {
+    max-width: 15%;
+  }
+
+  .profile__text-name {
+    font-size: 30px;
+    line-height: 36px;
+  }
+
+  .profile__text-description {
+    font-size: 16px;
+  }
+
+  .profile__button-edit {
+    padding: 0 0 20px 5px;
+  }
+
+  .profile__button-edit_image {
+    max-width: 80%;
+  }
+
+  .profile__button-add {
+    padding-left: 10%;
+    padding-right: 0;
+  }
+
+  .profile__button-add_image {
+    max-width: 120px;
+  }
+}
+
+@media screen and (max-width: 601px) {
+  .profile {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .profile__text {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+  .profile__image {
+    max-width: 50%;
+    padding-top: 10%;
+  }
+
+  .profile__info {
+    padding-top: 10%;
+  }
+
+  .profile__text-name {
+    font-size: 22px;
+    line-height: 30px;
+  }
+
+  .profile__text-description {
+    font-size: 13px;
+    padding-left: 30px;
+  }
+
+  .profile__button-edit {
+    padding: 0 0 10px 5px;
+  }
+
+  .profile__button-edit_image {
+    max-width: 60%;
+  }
+
+  .profile__button-add {
+    padding: 25px 0 0 0px;
+    width: 85%;
+  }
+
+  .profile__button-add_image {
+    max-width: 100%;
+  }
 }
