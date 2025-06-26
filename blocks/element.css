@@ -1,0 +1,39 @@
+.element {
+  background-color: #ffffff;
+  border-radius: 10px;
+  max-width: 282px;
+}
+
+.element__image {
+  width: 100%;
+  height: 282px;
+  object-fit: cover;
+  border-radius: 10px 10px 0 0;
+}
+
+.element__subtitle {
+  display: flex;
+  position: relative;
+  color: #000000;
+  font-size: 24px;
+  line-height: 29px;
+  font-weight: 900;
+  margin: 0;
+  padding: 20px 20px 20px;
+}
+
+.element__like-button {
+  width: 22px;
+  height: 19px;
+  background-color: transparent;
+  border: none;
+  position: absolute;
+  top: 45px;
+  right: 20px;
+  cursor: pointer;
+  transition: opacity 0.3s ease;
+}
+
+.element__like-button:hover {
+  opacity: 0.5;
+}
