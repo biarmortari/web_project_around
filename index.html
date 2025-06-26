@@ -32,6 +32,55 @@
                 alt="Botão de edição"
               />
             </button>
+
+            <div class="popup">
+              <div class="popup__container">
+                <button class="popup__close-button" type="button">
+                  <picture>
+                    <source
+                      media="(max-width: 601px)"
+                      srcset="./images/close-button-mobile.svg"
+                    />
+                    <img
+                      class="popup__close-button_image"
+                      src="./images/close-button.svg"
+                      alt="Botão de fechar"
+                    />
+                  </picture>
+                </button>
+                <form class="popup__form">
+                  <h2 class="popup__title">Editar perfil</h2>
+
+                  <label for="name" class="popup__label"></label>
+                  <input
+                    type="text"
+                    id="name"
+                    name="name"
+                    class="popup__input"
+                    placeholder="Nome"
+                    required
+                    minlength="2"
+                    maxlength="40"
+                  />
+
+                  <label for="about" class="popup__label"></label>
+                  <input
+                    type="text"
+                    id="about"
+                    name="about"
+                    class="popup__input"
+                    placeholder="Sobre mim"
+                    required
+                    minlength="2"
+                    maxlength="200"
+                  />
+
+                  <button type="submit" class="popup__save-button">
+                    Salvar
+                  </button>
+                </form>
+              </div>
+            </div>
           </div>
           <button class="profile__button-add">
             <picture>
@@ -78,5 +127,6 @@
         <p class="footer__text">&copy; 2025 Around The U.S.</p>
       </footer>
     </div>
+    <script src="./js/script.js"></script>
   </body>
 </html>
