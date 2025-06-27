@@ -11,45 +11,145 @@
     <div class="page">
       <header class="header">
         <img
-          class="header-logo"
+          class="header__logo"
           src="./images/Vector-header.png"
           alt-="Logo com a escrita Around the US"
         />
-        <hr />
+        <hr class="header__line" />
       </header>
       <main class="content">
         <section class="profile">
           <img class="profile__image" src="./images/Avatar.png" />
           <div class="profile__info">
-            <h1 class="profile__name">Jacques Cousteau</h1>
-            <div class="profile_edit"></div>
-            <h2 class="profile__description">Explorer</h2>
+            <div class="profile__text">
+              <span class="profile__text-name">Jacques Cousteau</span>
+              <span class="profile__text-description">Explorador</span>
+            </div>
+            <button class="profile__button-edit">
+              <img
+                class="profile__button-edit_image"
+                src="./images/edit-button.svg"
+                alt="Botão de edição"
+              />
+            </button>
+
+            <div class="popup">
+              <div class="popup__container">
+                <button class="popup__close-button" type="button">
+                  <picture>
+                    <source
+                      media="(max-width: 601px)"
+                      srcset="./images/close-button-mobile.svg"
+                    />
+                    <img
+                      class="popup__close-button_image"
+                      src="./images/close-button.svg"
+                      alt="Botão de fechar"
+                    />
+                  </picture>
+                </button>
+                <form class="popup__form">
+                  <h2 class="popup__title">Editar perfil</h2>
+
+                  <label for="name" class="popup__label"></label>
+                  <input
+                    type="text"
+                    id="name"
+                    name="name"
+                    class="popup__input"
+                    placeholder="Nome"
+                    required
+                    minlength="2"
+                    maxlength="40"
+                  />
+
+                  <label for="about" class="popup__label"></label>
+                  <input
+                    type="text"
+                    id="about"
+                    name="about"
+                    class="popup__input"
+                    placeholder="Sobre mim"
+                    required
+                    minlength="2"
+                    maxlength="200"
+                  />
+
+                  <button type="submit" class="popup__save-button">
+                    Salvar
+                  </button>
+                </form>
+              </div>
+            </div>
           </div>
+          <button class="profile__button-add">
+            <picture>
+              <source
+                media="(max-width: 601px)"
+                srcset="./images/add-button-mobile.svg"
+              />
+              <img
+                class="profile__button-add_image"
+                src="./images/add-button.svg"
+                alt="Botão de adição"
+              />
+            </picture>
+          </button>
         </section>
         <section class="elements">
           <div class="element">
             <img class="element__image" src="./images/card-1.jpg" />
-            <p class="element__subtitle">Vale de Yosemite</p>
+            <div class="element__subtitle">
+              <p class="element__text">Vale de Yosemite</p>
+              <button class="element__like-button">
+                <img src="./images/like-button.svg" alt="Botão de curtir" />
+              </button>
+            </div>
           </div>
           <div class="element">
             <img class="element__image" src="./images/card-2.jpg" />
-            <p class="element__subtitle">Lago Louise</p>
+            <div class="element__subtitle">
+              <p class="element__text">Lago Louise</p>
+              <button class="element__like-button">
+                <img src="./images/like-button.svg" alt="Botão de curtir" />
+              </button>
+            </div>
           </div>
           <div class="element">
             <img class="element__image" src="./images/card-3.jpg" />
-            <p class="element__subtitle">Montanhas Care...</p>
+            <div class="element__subtitle">
+              <p class="element__text">Montanhas Care...</p>
+              <button class="element__like-button">
+                <img src="./images/like-button.svg" alt="Botão de curtir" />
+              </button>
+            </div>
           </div>
           <div class="element">
             <img class="element__image" src="./images/card-4.jpg" />
-            <p class="element__subtitle">Latemar</p>
+            <div class="element__subtitle">
+              <p class="element__text">Latemar</p>
+              <button class="element__like-button">
+                <img src="./images/like-button.svg" alt="Botão de curtir" />
+              </button>
+            </div>
           </div>
           <div class="element">
             <img class="element__image" src="./images/card-5.jpg" />
-            <p class="element__subtitle">Parque Nacional...</p>
+            <div class="element__subtitle">
+              <p class="element__text">Parque Nacional...</p>
+              <button class="element__like-button">
+                <img src="./images/like-button.svg" alt="Botão de curtir" />
+              </button>
+            </div>
           </div>
           <div class="element">
             <img class="element__image" src="./images/card-6.jpg" />
-            <p class="element__subtitle">Lago di Braies</p>
+            <div class="element__subtitle">
+              <p class="element__text">Lago di Braies</p>
+              <button class="element__like-button">
+                <img src="./images/like-button.svg" alt="Botão de curtir" />
+              </button>
+            </div>
           </div>
         </section>
       </main>
@@ -57,5 +157,6 @@
         <p class="footer__text">&copy; 2025 Around The U.S.</p>
       </footer>
     </div>
+    <script src="./js/script.js"></script>
   </body>
 </html>
