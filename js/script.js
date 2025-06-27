@@ -29,3 +29,22 @@ likeButtons.forEach((button) => {
     }
   });
 });
+
+const formElement = document.querySelector(".popup__form");
+
+const nameInput = document.querySelector("#name");
+const jobInput = document.querySelector("#about");
+
+const profileName = document.querySelector(".profile__text-name");
+const profileDescription = document.querySelector(".profile__text-description");
+
+function handleProfileFormSubmit(evt) {
+  evt.preventDefault();
+
+  profileName.textContent = nameInput.value;
+  profileDescription.textContent = jobInput.value;
+
+  closePopup();
+}
+
+formElement.addEventListener("submit", handleProfileFormSubmit);

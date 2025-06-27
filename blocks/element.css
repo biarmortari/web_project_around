@@ -2,6 +2,9 @@
   background-color: #ffffff;
   border-radius: 10px;
   max-width: 282px;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
 }
 
 .element__image {
