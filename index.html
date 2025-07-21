@@ -37,7 +37,7 @@
               />
             </button>
 
-            <div class="popup">
+            <div class="popup popup-edit-profile" id="popup-edit-profile">
               <div class="popup__container">
                 <button class="popup__close-button" type="button">
                   <picture>
@@ -52,7 +52,10 @@
                     />
                   </picture>
                 </button>
-                <form class="popup__form">
+                <form
+                  class="popup__form popup__form_profile"
+                  id="popup__form_profile"
+                >
                   <h2 class="popup__title">Editar perfil</h2>
 
                   <label for="name" class="popup__label"></label>
@@ -99,6 +102,55 @@
               />
             </picture>
           </button>
+          <div class="popup popup-edit-image" id="popup-edit-image">
+            <div class="popup__container">
+              <button class="popup__close-button" type="button">
+                <picture>
+                  <source
+                    media="(max-width: 601px)"
+                    srcset="./images/close-button-mobile.svg"
+                  />
+                  <img
+                    class="popup__close-button popup__close-button_image"
+                    src="./images/close-button.svg"
+                    alt="Botao de fechar"
+                  />
+                </picture>
+              </button>
+              <form
+                class="popup__form popup__form_image"
+                id="popup__form_image"
+              >
+                <h2 class="popup__title">Novo local</h2>
+
+                <label for="local" class="popup__label"></label>
+                <input
+                  type="text"
+                  id="local"
+                  name="local"
+                  class="popup__input"
+                  placeholder="Título"
+                  required
+                  minlength="2"
+                  maxlength="40"
+                />
+
+                <label for="link" class="popup__label"></label>
+                <input
+                  type="text"
+                  id="link"
+                  name="link"
+                  class="popup__input"
+                  placeholder="Link da imagem"
+                  required
+                  minlength="2"
+                  maxlength="200"
+                />
+
+                <button type="submit" class="popup__save-button">Criar</button>
+              </form>
+            </div>
+          </div>
         </div>
         <div class="elements">
           <div class="element">
