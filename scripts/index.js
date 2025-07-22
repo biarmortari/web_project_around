@@ -11,6 +11,11 @@ const closeEditImageButton = editImagePopup.querySelector(
   ".popup__close-button"
 );
 
+// --- SELEÇÕES DO POPUP DE IMAGEM: AGORA NO INÍCIO E CORRETAS ---
+const imagePopup = document.querySelector("#popup-image"); // Este é o container principal do popup de imagem
+const modalImage = imagePopup.querySelector(".modal-image"); // A imagem dentro do popup
+const closeImageButton = imagePopup.querySelector(".popup__close-button"); // O botão de fechar do popup de imagem
+
 function openPopup(popupElement) {
   popupElement.classList.add("popup_opened");
 }
@@ -28,6 +33,8 @@ closeEditProfileButton.addEventListener("click", () =>
 closeEditImageButton.addEventListener("click", () =>
   closePopup(editImagePopup)
 );
+// Listener para fechar o popup de imagem ampliada
+closeImageButton.addEventListener("click", () => closePopup(imagePopup));
 
 const formElement = document.querySelector(".popup__form_profile");
 
@@ -85,6 +92,27 @@ function createCard(name, link) {
   cardImage.src = link;
   cardImage.alt = name;
 
+  cardImage.addEventListener("click", () => {
+    modalImage.src = link; // Usando a variável global corrigida
+    modalImage.alt = name; // Usando a variável global corrigida
+    openPopup(imagePopup); // Usando a variável global corrigida
+  });
+
+  const trashButton = document.createElement("button");
+  trashButton.classList.add("element__trash-button");
+  trashButton.type = "button";
+
+  const trashImage = document.createElement("img");
+  trashImage.classList.add("element__trash-image");
+  trashImage.src = "./images/trash-button.svg";
+  trashImage.alt = "Botão de excluir";
+
+  trashButton.appendChild(trashImage);
+
+  trashButton.addEventListener("click", () => {
+    cardElement.remove();
+  });
+
   const cardSubtitle = document.createElement("div");
   cardSubtitle.classList.add("element__subtitle");
 
@@ -113,7 +141,7 @@ function createCard(name, link) {
 
   likeButton.appendChild(likeImage);
   cardSubtitle.append(cardText, likeButton);
-  cardElement.append(cardImage, cardSubtitle);
+  cardElement.append(cardImage, trashButton, cardSubtitle);
 
   return cardElement;
 }

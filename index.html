@@ -152,90 +152,29 @@
             </div>
           </div>
         </div>
-        <div class="elements">
-          <div class="element">
-            <img
-              class="element__image"
-              src="./images/card-1.jpg"
-              alt="Rio em floresta com montanha ao fundo."
-            />
-            <div class="element__subtitle">
-              <p class="element__text">Vale de Yosemite</p>
-              <button class="element__like-button">
-                <img src="./images/like-button.svg" alt="Botão de curtir" />
-              </button>
-            </div>
-          </div>
-          <div class="element">
-            <img
-              class="element__image"
-              src="./images/card-2.jpg"
-              alt="Lago azul com reflexo de montanhas."
-            />
-            <div class="element__subtitle">
-              <p class="element__text">Lago Louise</p>
-              <button class="element__like-button">
-                <img src="./images/like-button.svg" alt="Botão de curtir" />
-              </button>
-            </div>
-          </div>
-          <div class="element">
-            <img
-              class="element__image"
-              src="./images/card-3.jpg"
-              alt=" Pôr do sol laranja sobre montanhas."
-            />
-            <div class="element__subtitle">
-              <p class="element__text">Montanhas Care...</p>
-              <button class="element__like-button">
-                <img src="./images/like-button.svg" alt="Botão de curtir" />
-              </button>
-            </div>
-          </div>
-          <div class="element">
-            <img
-              class="element__image"
-              src="./images/card-4.jpg"
-              alt="Montanhas rochosas à noite sob céu estrelado."
-            />
-            <div class="element__subtitle">
-              <p class="element__text">Latemar</p>
-              <button class="element__like-button">
-                <img src="./images/like-button.svg" alt="Botão de curtir" />
-              </button>
-            </div>
-          </div>
-          <div class="element">
-            <img
-              class="element__image"
-              src="./images/card-5.jpg"
-              alt="Montanha refletida em lago ao entardecer."
-            />
-            <div class="element__subtitle">
-              <p class="element__text">Parque Nacional...</p>
-              <button class="element__like-button">
-                <img src="./images/like-button.svg" alt="Botão de curtir" />
-              </button>
-            </div>
-          </div>
-          <div class="element">
-            <img
-              class="element__image"
-              src="./images/card-6.jpg"
-              alt="Barcos em lago com montanhas ao fundo."
-            />
-            <div class="element__subtitle">
-              <p class="element__text">Lago di Braies</p>
-              <button class="element__like-button">
-                <img src="./images/like-button.svg" alt="Botão de curtir" />
-              </button>
-            </div>
-          </div>
-        </div>
+        <div class="elements"></div>
       </main>
       <footer class="footer">
         <p class="footer__text">&copy; 2025 Around The U.S.</p>
       </footer>
+    </div>
+    <div class="popup popup-image" id="popup-image">
+      <div class="popup__container popup__container_image">
+        <button class="popup__close-button" type="button">
+          <picture>
+            <source
+              media="(max-width: 601px)"
+              srcset="./images/close-button-mobile.svg"
+            />
+            <img
+              class="popup__close-button popup__close-button_image"
+              src="./images/close-button.svg"
+              alt="Botao de fechar"
+            />
+          </picture>
+        </button>
+        <img class="modal-image" src="" alt="" />
+      </div>
     </div>
     <script src="./scripts/index.js"></script>
   </body>
