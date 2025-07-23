@@ -47,8 +47,8 @@
 }
 
 .modal-image {
-  max-width: 80vw;
-  max-height: 90vh;
+  max-width: 75vw;
+  max-height: 75vh;
   display: block;
 }
 
@@ -121,10 +121,6 @@
 }
 
 @media screen and (max-width: 1024px) {
-  .modal-image {
-    max-height: 70vh;
-  }
-
   .popup__close-button {
     width: 26px;
     height: 26px;
