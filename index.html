@@ -160,20 +160,25 @@
     </div>
     <div class="popup popup-image" id="popup-image">
       <div class="popup__container popup__container_image">
-        <button class="popup__close-button" type="button">
-          <picture>
-            <source
-              media="(max-width: 601px)"
-              srcset="./images/close-button-mobile.svg"
-            />
-            <img
-              class="popup__close-button popup__close-button_image"
-              src="./images/close-button.svg"
-              alt="Botao de fechar"
-            />
-          </picture>
-        </button>
-        <img class="modal-image" src="" alt="" />
+        <div class="image-wrapper">
+          <img class="modal-image" src="" alt="" />
+          <button
+            class="popup__close-button popup__close-button_image"
+            type="button"
+          >
+            <picture>
+              <source
+                media="(max-width: 601px)"
+                srcset="./images/close-button-mobile.svg"
+              />
+              <img
+                class="popup__close-button"
+                src="./images/close-button.svg"
+                alt="Botao de fechar"
+              />
+            </picture>
+          </button>
+        </div>
       </div>
     </div>
     <script src="./scripts/index.js"></script>

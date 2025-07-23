@@ -11,10 +11,9 @@ const closeEditImageButton = editImagePopup.querySelector(
   ".popup__close-button"
 );
 
-// --- SELEÇÕES DO POPUP DE IMAGEM: AGORA NO INÍCIO E CORRETAS ---
-const imagePopup = document.querySelector("#popup-image"); // Este é o container principal do popup de imagem
-const modalImage = imagePopup.querySelector(".modal-image"); // A imagem dentro do popup
-const closeImageButton = imagePopup.querySelector(".popup__close-button"); // O botão de fechar do popup de imagem
+const imagePopup = document.querySelector("#popup-image");
+const modalImage = imagePopup.querySelector(".modal-image");
+const closeImageButton = imagePopup.querySelector(".popup__close-button_image");
 
 function openPopup(popupElement) {
   popupElement.classList.add("popup_opened");
@@ -33,7 +32,7 @@ closeEditProfileButton.addEventListener("click", () =>
 closeEditImageButton.addEventListener("click", () =>
   closePopup(editImagePopup)
 );
-// Listener para fechar o popup de imagem ampliada
+
 closeImageButton.addEventListener("click", () => closePopup(imagePopup));
 
 const formElement = document.querySelector(".popup__form_profile");
@@ -93,9 +92,9 @@ function createCard(name, link) {
   cardImage.alt = name;
 
   cardImage.addEventListener("click", () => {
-    modalImage.src = link; // Usando a variável global corrigida
-    modalImage.alt = name; // Usando a variável global corrigida
-    openPopup(imagePopup); // Usando a variável global corrigida
+    modalImage.src = link;
+    modalImage.alt = name;
+    openPopup(imagePopup);
   });
 
   const trashButton = document.createElement("button");

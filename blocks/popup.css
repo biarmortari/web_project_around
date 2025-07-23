@@ -40,9 +40,16 @@
   align-items: center;
 }
 
+.image-wrapper {
+  position: relative;
+  display: inline-block;
+  line-height: 0;
+}
+
 .modal-image {
-  max-width: 200%;
-  max-height: 200%;
+  max-width: 80vw;
+  max-height: 90vh;
+  display: block;
 }
 
 .popup__form {
@@ -95,13 +102,32 @@
   transition: opacity 0.5s ease;
 }
 
+.popup__close-button_image {
+  position: absolute;
+  top: 0;
+  right: 0;
+  transform: translate(50%, -50%);
+  width: 40px;
+  height: 40px;
+  background: none;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  z-index: 2;
+}
+
 .popup__close-button:hover {
   opacity: 0.6;
 }
 
 @media screen and (max-width: 1024px) {
   .modal-image {
-    max-width: 150%;
+    max-height: 70vh;
+  }
+
+  .popup__close-button {
+    width: 26px;
+    height: 26px;
   }
 }
 
