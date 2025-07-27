@@ -54,6 +54,8 @@ function handleProfileFormSubmit(evt) {
 
 formElement.addEventListener("submit", handleProfileFormSubmit);
 
+const cardTemplate = document.querySelector("#card-template").content;
+
 const container = document.querySelector(".elements");
 const initialCards = [
   {
@@ -83,13 +85,17 @@ const initialCards = [
 ];
 
 function createCard(name, link) {
-  const cardElement = document.createElement("div");
-  cardElement.classList.add("element");
+  const cardElement = cardTemplate.cloneNode(true);
 
-  const cardImage = document.createElement("img");
-  cardImage.classList.add("element__image");
+  const cardImage = cardElement.querySelector(".element__image");
+  const cardText = cardElement.querySelector(".element__text");
+  const trashButton = cardElement.querySelector(".element__trash-button");
+  const likeButton = cardElement.querySelector(".element__like-button");
+  const likeImage = likeButton.querySelector(".element__like-image");
+
   cardImage.src = link;
   cardImage.alt = name;
+  cardText.textContent = name;
 
   cardImage.addEventListener("click", () => {
     modalImage.src = link;
@@ -97,36 +103,9 @@ function createCard(name, link) {
     openPopup(imagePopup);
   });
 
-  const trashButton = document.createElement("button");
-  trashButton.classList.add("element__trash-button");
-  trashButton.type = "button";
-
-  const trashImage = document.createElement("img");
-  trashImage.classList.add("element__trash-image");
-  trashImage.src = "./images/trash-button.svg";
-  trashImage.alt = "Botão de excluir";
-
-  trashButton.appendChild(trashImage);
-
-  trashButton.addEventListener("click", () => {
-    cardElement.remove();
+  trashButton.addEventListener("click", (evt) => {
+    evt.target.closest(".element").remove();
   });
-
-  const cardSubtitle = document.createElement("div");
-  cardSubtitle.classList.add("element__subtitle");
-
-  const cardText = document.createElement("p");
-  cardText.classList.add("element__text");
-  cardText.textContent = name;
-
-  const likeButton = document.createElement("button");
-  likeButton.classList.add("element__like-button");
-  likeButton.type = "button";
-
-  const likeImage = document.createElement("img");
-  likeImage.classList.add("element__like-image");
-  likeImage.src = "./images/like-button.svg";
-  likeImage.alt = "Botão de curtir";
 
   likeButton.addEventListener("click", () => {
     likeButton.classList.toggle("active");
@@ -138,21 +117,17 @@ function createCard(name, link) {
     }
   });
 
-  likeButton.appendChild(likeImage);
-  cardSubtitle.append(cardText, likeButton);
-  cardElement.append(cardImage, trashButton, cardSubtitle);
-
   return cardElement;
 }
 
-function addCard(cardElement) {
+function prependCard(cardElement) {
   const elements = document.querySelector(".elements");
   elements.prepend(cardElement);
 }
 
 initialCards.forEach((data) => {
   const newCard = createCard(data.name, data.link);
-  addCard(newCard);
+  prependCard(newCard);
 });
 
 const formElementImage = document.querySelector(".popup__form_image");
@@ -165,7 +140,7 @@ function handleImageFormSubmit(evt) {
 
   const cardElement = createCard(localInput.value, linkInput.value);
   const elements = document.querySelector(".elements");
-  elements.prepend(cardElement);
+  prependCard(cardElement);
 
   closePopup(editImagePopup);
 }

@@ -3,7 +3,7 @@
   color: #ffffff;
   font-family: "Inter", sans-serif;
   max-width: 100%;
-  min-height: 320px;
+  min-height: 100vh;
   margin: 0 auto;
   padding: 3.5% 16% 0;
 }
