@@ -55,6 +55,7 @@
                 <form
                   class="popup__form popup__form_profile"
                   id="popup__form_profile"
+                  name="popup__form_profile"
                 >
                   <h2 class="popup__title">Editar perfil</h2>
 
@@ -120,6 +121,7 @@
               <form
                 class="popup__form popup__form_image"
                 id="popup__form_image"
+                name="popup__form_image"
               >
                 <h2 class="popup__title">Novo local</h2>
 
@@ -132,19 +134,17 @@
                   placeholder="Título"
                   required
                   minlength="2"
-                  maxlength="40"
+                  maxlength="30"
                 />
 
                 <label for="link" class="popup__label"></label>
                 <input
-                  type="text"
+                  type="url"
                   id="link"
                   name="link"
                   class="popup__input"
                   placeholder="Link da imagem"
                   required
-                  minlength="2"
-                  maxlength="200"
                 />
 
                 <button type="submit" class="popup__save-button">Criar</button>
@@ -204,5 +204,6 @@
       </div>
     </div>
     <script src="./scripts/index.js"></script>
+    <script src="./scripts/validate.js"></script>
   </body>
 </html>
