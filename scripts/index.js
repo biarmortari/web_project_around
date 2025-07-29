@@ -23,6 +23,21 @@ function closePopup(popupElement) {
   popupElement.classList.remove("popup_opened");
 }
 
+document.addEventListener("keydown", (evt) => {
+  if (evt.key === "Escape") {
+    const openedPopup = document.querySelector(".popup_opened");
+    if (openedPopup) {
+      closePopup(openedPopup);
+    }
+  }
+});
+
+document.addEventListener("click", (evt) => {
+  if (evt.target.classList.contains("popup")) {
+    closePopup(evt.target);
+  }
+});
+
 editButton.addEventListener("click", () => openPopup(editProfilePopup));
 addButton.addEventListener("click", () => openPopup(editImagePopup));
 
