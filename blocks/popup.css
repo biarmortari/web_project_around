@@ -76,7 +76,7 @@
 
 .popup__input_type_error {
   color: #ff0000;
-  /*border-bottom: 1px solid #ff0000;*/
+  border-bottom: 1px solid #ff0000;
 }
 
 .popup__error {

@@ -37,12 +37,12 @@ function checkValidity(formElement, inputElement, config) {
   }
 }
 
-function hasValidInput(inputList) {
+function hasInvalidInput(inputList) {
   return inputList.some((inputElement) => !inputElement.validity.valid);
 }
 
 function toggleButtonState(inputList, buttonElement, config) {
-  if (hasValidInput(inputList, config)) {
+  if (hasInvalidInput(inputList, config)) {
     buttonElement.classList.add(config.inactiveButtonClass);
     buttonElement.disabled = true;
   } else {
