@@ -32,10 +32,12 @@ document.addEventListener("keydown", (evt) => {
   }
 });
 
-document.addEventListener("click", (evt) => {
-  if (evt.target.classList.contains("popup")) {
-    closePopup(evt.target);
-  }
+document.querySelectorAll(".popup").forEach((popup) => {
+  popup.addEventListener("click", (evt) => {
+    if (evt.target.classList.contains("popup")) {
+      closePopup(evt.target);
+    }
+  });
 });
 
 editButton.addEventListener("click", () => openPopup(editProfilePopup));
@@ -50,7 +52,7 @@ closeEditImageButton.addEventListener("click", () =>
 
 closeImageButton.addEventListener("click", () => closePopup(imagePopup));
 
-const formElement = document.querySelector(".popup__form_profile");
+const formElementProfile = document.querySelector(".popup__form_profile");
 
 const nameInput = document.querySelector("#name");
 const jobInput = document.querySelector("#about");

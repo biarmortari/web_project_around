@@ -72,11 +72,23 @@
   border: none;
   border-bottom: 1px solid rgba(0, 0, 0, 0.2);
   margin: 0;
-  padding-bottom: 12px;
 }
 
-.popup__input:invalid {
-  border-bottom: #ff0000 1px solid;
+.popup__input_type_error {
+  color: #ff0000;
+  /*border-bottom: 1px solid #ff0000;*/
+}
+
+.popup__error {
+  display: none;
+  color: red;
+}
+
+.popup__error_visible {
+  display: block;
+  border: none;
+  margin: 0;
+  font-size: 12px;
 }
 
 .popup__save-button {
@@ -88,9 +100,10 @@
   height: 50px;
 }
 
-.popup__save-button_inactive {
-  opacity: 1;
-  pointer-events: none;
+.popup__save-button_disabled {
+  background-color: #ffffff;
+  border: rgba(0, 0, 0, 0.2) 1px solid;
+  color: rgba(0, 0, 0, 0.2);
 }
 
 .popup__save-button:hover {
