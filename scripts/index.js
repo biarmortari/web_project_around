@@ -21,6 +21,10 @@ function openPopup(popupElement) {
 
 function closePopup(popupElement) {
   popupElement.classList.remove("popup_opened");
+  const form = popupElement.querySelector("form");
+  if (form) {
+    formResetValidation(form, config);
+  }
 }
 
 document.addEventListener("keydown", (evt) => {
@@ -69,7 +73,7 @@ function handleProfileFormSubmit(evt) {
   closePopup(editProfilePopup);
 }
 
-formElement.addEventListener("submit", handleProfileFormSubmit);
+formElementProfile.addEventListener("submit", handleProfileFormSubmit);
 
 const cardTemplate = document.querySelector("#card-template").content;
 
@@ -163,3 +167,5 @@ function handleImageFormSubmit(evt) {
 }
 
 formElementImage.addEventListener("submit", handleImageFormSubmit);
+
+import { config, formResetValidation } from "./validate.js";

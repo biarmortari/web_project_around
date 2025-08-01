@@ -1,11 +1,13 @@
-enableValidation({
+export const config = {
   formSelector: ".popup__form",
   inputSelector: ".popup__input",
   submitButtonSelector: ".popup__save-button",
   inactiveButtonClass: "popup__save-button_disabled",
   inputErrorClass: "popup__input_type_error",
   errorClass: "popup__error_visible",
-});
+};
+
+enableValidation(config);
 
 const formElement = document.querySelector(".popup__form");
 const inputElement = document.querySelector(".popup__input");
@@ -76,3 +78,22 @@ function enableValidation(config) {
     setEventListeners(formElement, config);
   });
 }
+
+export const formResetValidation = (formElement, config) => {
+  formElement.reset();
+
+  const inputList = Array.from(
+    formElement.querySelectorAll(config.inputSelector)
+  );
+  const buttonElement = formElement.querySelector(config.submitButtonSelector);
+
+  inputList.forEach((inputElement) => {
+    const errorElement = formElement.querySelector(`#${inputElement.id}-error`);
+    inputElement.classList.remove(config.inputErrorClass);
+    errorElement.textContent = "";
+    errorElement.classList.remove(config.errorClass);
+  });
+
+  buttonElement.classList.add(config.inactiveButtonClass);
+  buttonElement.disabled = true;
+};
