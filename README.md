@@ -4,41 +4,51 @@ Explore e compartilhe momentos ao redor do mundo.
 
 ## Descrição do Projeto
 
-Esse projeto faz parte da **7ª sprint** do bootcamp de Desenvolvimento Web da TripleTen.
+Esse projeto faz parte da **7ª a 9ª sprint** do bootcamp de Desenvolvimento Web da TripleTen.
 
-É uma landing page que tem como objetivo compartilhar fotos de diferentes locais do mundo. A ideia é que os usuários poderão criar um perfil e adicionar suas imagens, sendo possível também curtir e favoritar imagens de outros usuários.
+É uma landing page interativa para compartilhar fotos de diferentes lugares do mundo. A ideia é permitir que os usuários criem um perfil, adicionem imagens com legenda e link, curtam e excluam cartões — tudo com JavaScript puro, sem frameworks.
 
-Possui como foco o aprendizado de **JavaScript** básico, utilazado para criar a janela pop-up e estilizar o botão de curtir. Além disso, estimula o aprimoramento de **HTML semântico**, **CSS grid**, **position** e **flexbox**, e **design responsivo**.
+Além da interação básica, o projeto foca em reforçar boas práticas de:
 
-## Tecnologias utilizadas
+- HTML semântico
+- CSS moderno com Flexbox, Grid Layout e Position
+- Design responsivo para diferentes tamanhos de tela
+- Validação de formulários com feedback visual em tempo real
+- UX aprimorada, incluindo fechamento de pop-ups via tecla Esc ou clique fora
 
-- HTML5
-- CSS3
-- Flexbox
-- Grid Layout
-- Position
-- JavaScript
-- Design web responsivo
+## Funcionalidades Implementadas
+
+✅ Edição de perfil (nome e descrição) via pop-up
+✅ Adição de novas imagens com legenda e link
+✅ Botão de curtir para cada imagem
+✅ Exclusão de cartões de imagem
+✅ Fechamento de pop-ups com Esc ou clique fora
+✅ Validação de formulários com mensagens de erro, campos destacados e botão de envio dinâmico
+✅ Estrutura de código modular com ES Modules
+✅ Reset automático do formulário e da validação ao fechar pop-ups
 
 ## Desafios enfrentados
 
-Este projeto marcou a minha primeira experiência prática com JavaScript.
+Este projeto marcou minha primeira experiência prática estruturando JavaScript de forma modular.
 
-O principal desafio foi adaptar criar uma janela pop-up interativa a partir do botão **editar** e adaptá-la em diferentes resoluções de tela.
+Os principais desafios foram:
+
+- Criar pop-ups dinâmicos que funcionam bem em diferentes tamanhos de tela
+- Implementar validação de formulários com feedback visual customizado
+- Aprender a usar módulos ES (export e import) para organizar funções reutilizáveis
+- Garantir que o estado do formulário fosse resetado corretamente ao abrir e fechar os pop-ups
 
 ## Possíveis melhorias
 
-Atualmente, o projeto é uma landing page estática e não possui conexão com bancos de dados. Isso significa que, embora possa haver elementos interativos como uma janela pop-up, os usuários ainda não conseguem editar ou interagir com o conteúdo de forma dinâmica (por exemplo, salvar informações, criar perfis, etc.).
+Atualmente, o projeto funciona como uma landing page estática com elementos interativos — mas ainda não salva dados de forma persistente.
 
-Como possíveis evoluções, considero:
+Como próximas etapas, planejo:
 
-- Implementar um backend com conexão a banco de dados para permitir que os usuários interajam de forma mais significativa.
-
-- Adicionar um sistema de autenticação de usuários para funcionalidades como registro e login.
-
-- Adicionar um menu de navegação para diferentes seções ou páginas.
-
-- Incluir links interativos e botões que direcionem para conteúdos relacionados.
+- Implementar um backend com conexão a banco de dados para armazenar perfis, imagens e curtidas
+- Adicionar um sistema de autenticação com registro e login
+- Criar rotas e um menu de navegação para diferentes páginas/seções
+- Melhorar a UI/UX com animações e feedbacks mais ricos
+- Tornar o projeto totalmente responsivo e acessível
 
 ## Visite o site ao vivo
 
