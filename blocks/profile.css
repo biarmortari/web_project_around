@@ -21,12 +21,20 @@
   line-height: 48px;
   font-weight: 500;
   padding-bottom: 2%;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+  max-width: 370px;
 }
 
 .profile__text-description {
   display: block;
   font-size: 18px;
   font-weight: 400;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+  max-width: 400px;
 }
 
 .profile__button-edit {
@@ -59,10 +67,12 @@
   .profile__text-name {
     font-size: 1.5rem;
     line-height: 36px;
+    max-width: 150px;
   }
 
   .profile__text-description {
     font-size: 16px;
+    max-width: 200px;
   }
 
   .profile__button-edit {

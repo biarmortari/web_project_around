@@ -7,8 +7,6 @@ export const config = {
   errorClass: "popup__error_visible",
 };
 
-enableValidation(config);
-
 const formElement = document.querySelector(".popup__form");
 const inputElement = document.querySelector(".popup__input");
 
@@ -78,6 +76,8 @@ function enableValidation(config) {
     setEventListeners(formElement, config);
   });
 }
+
+enableValidation(config);
 
 export const formResetValidation = (formElement, config) => {
   formElement.reset();
