@@ -124,7 +124,7 @@
   transition: opacity 0.5s ease;
 }
 
-.popup__close-button_image {
+.popup__close-button-icon {
   position: absolute;
   top: 0;
   right: 0;

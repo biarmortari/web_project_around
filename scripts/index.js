@@ -13,7 +13,7 @@ const closeEditImageButton = editImagePopup.querySelector(
 
 const imagePopup = document.querySelector("#popup-image");
 const modalImage = imagePopup.querySelector(".modal-image");
-const closeImageButton = imagePopup.querySelector(".popup__close-button_image");
+const closeImageButton = imagePopup.querySelector(".popup__close-button-icon");
 
 function openPopup(popupElement) {
   popupElement.classList.add("popup_opened");

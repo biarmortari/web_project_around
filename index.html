@@ -31,7 +31,7 @@
             </div>
             <button class="profile__button-edit">
               <img
-                class="profile__button-edit profile__button-edit_image"
+                class="profile__button-edit-icon"
                 src="./images/edit-button.svg"
                 alt="Botão de edição"
               />
@@ -46,7 +46,7 @@
                       srcset="./images/close-button-mobile.svg"
                     />
                     <img
-                      class="popup__close-button popup__close-button_image"
+                      class="popup__close-button-icon"
                       src="./images/close-button.svg"
                       alt="Botao de fechar"
                     />
@@ -99,7 +99,7 @@
                 srcset="./images/add-button-mobile.svg"
               />
               <img
-                class="profile__button-add profile__button-add_image"
+                class="profile__button-add-icon"
                 src="./images/add-button.svg"
                 alt="Botao de ediçao"
               />
@@ -114,7 +114,7 @@
                     srcset="./images/close-button-mobile.svg"
                   />
                   <img
-                    class="popup__close-button popup__close-button_image"
+                    class="popup__close-button-icon"
                     src="./images/close-button.svg"
                     alt="Botao de fechar"
                   />
@@ -185,13 +185,10 @@
       </footer>
     </div>
     <div class="popup popup-image" id="popup-image">
-      <div class="popup__container popup__container_image">
+      <div class="popup__container">
         <div class="image-wrapper">
           <img class="modal-image" src="" alt="" />
-          <button
-            class="popup__close-button popup__close-button_image"
-            type="button"
-          >
+          <button class="popup__close-button-icon" type="button">
             <picture>
               <source
                 media="(max-width: 601px)"
