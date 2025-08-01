@@ -17,10 +17,12 @@ const closeImageButton = imagePopup.querySelector(".popup__close-button-icon");
 
 function openPopup(popupElement) {
   popupElement.classList.add("popup_opened");
+  document.addEventListener("keydown", handleEscapeKey);
 }
 
 function closePopup(popupElement) {
   popupElement.classList.remove("popup_opened");
+  document.removeEventListener("keydown", handleEscapeKey);
   const form = popupElement.querySelector("form");
   if (form) {
     formResetValidation(form, config);
