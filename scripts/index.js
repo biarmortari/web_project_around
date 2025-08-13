@@ -15,7 +15,7 @@ const imagePopup = document.querySelector("#popup-image");
 const modalImage = imagePopup.querySelector(".modal-image");
 const closeImageButton = imagePopup.querySelector(".popup__close-button-icon");
 
-function openPopup(popupElement) {
+/* function openPopup(popupElement) {
   popupElement.classList.add("popup_opened");
   document.addEventListener("keydown", handleEscapeKey);
 }
@@ -45,6 +45,7 @@ document.querySelectorAll(".popup").forEach((popup) => {
     }
   });
 });
+*/
 
 editButton.addEventListener("click", () => openPopup(editProfilePopup));
 addButton.addEventListener("click", () => openPopup(editImagePopup));
