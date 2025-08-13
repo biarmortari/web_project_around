@@ -1,4 +1,4 @@
-import { openPopup, closePopup } from "./utils.js";
+import { openPopup, closePopup, handleCardClick } from "./utils.js";
 import { Card } from "./Card.js";
 import { config, formResetValidation } from "./validate.js";
 
@@ -154,8 +154,9 @@ function prependCard(cardElement) {
 }
 
 initialCards.forEach((data) => {
-  const newCard = createCard(data.name, data.link);
-  prependCard(newCard);
+  const card = new Card(data, "#card-template", handleCardClick);
+  const cardElement = card.generateCard();
+  prependCard(cardElement);
 });
 
 const formElementImage = document.querySelector(".popup__form_image");
