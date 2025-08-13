@@ -1,3 +1,7 @@
+import { openPopup, closePopup } from "./utils.js";
+import { Card } from "./Card.js";
+import { config, formResetValidation } from "./validate.js";
+
 const editButton = document.querySelector(".profile__button-edit");
 const addButton = document.querySelector(".profile__button-add");
 
@@ -171,4 +175,3 @@ function handleImageFormSubmit(evt) {
 
 formElementImage.addEventListener("submit", handleImageFormSubmit);
 
-import { config, formResetValidation } from "./validate.js";
