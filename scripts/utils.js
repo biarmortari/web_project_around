@@ -29,4 +29,10 @@ document.querySelectorAll(".popup").forEach((popup) => {
   });
 });
 
-export { openPopup, closePopup };
+function handleCardClick(name, link) {
+  modalImage.src = link;
+  modalImage.alt = name;
+  openPopup(imagePopup);
+}
+
+export { openPopup, closePopup, handleCardClick };
