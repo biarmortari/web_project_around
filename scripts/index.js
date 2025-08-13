@@ -82,7 +82,7 @@ function handleProfileFormSubmit(evt) {
 
 formElementProfile.addEventListener("submit", handleProfileFormSubmit);
 
-const cardTemplate = document.querySelector("#card-template").content;
+/*const cardTemplate = document.querySelector("#card-template").content;*/
 
 const container = document.querySelector(".elements");
 const initialCards = [
@@ -112,7 +112,7 @@ const initialCards = [
   },
 ];
 
-function createCard(name, link) {
+/*function createCard(name, link) {
   const cardElement = cardTemplate.cloneNode(true);
 
   const cardImage = cardElement.querySelector(".element__image");
@@ -146,7 +146,7 @@ function createCard(name, link) {
   });
 
   return cardElement;
-}
+}*/
 
 function prependCard(cardElement) {
   const elements = document.querySelector(".elements");
