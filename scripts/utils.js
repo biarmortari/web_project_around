@@ -1,14 +1,28 @@
+import { FormValidator } from "./validate.js";
+
+const handleEscKey = (evt) => {
+  if (evt.key === "Escape") {
+    const openedPopup = document.querySelector(".popup_opened");
+    if (openedPopup) {
+      closePopup(openedPopup);
+    }
+  }
+};
+
 function openPopup(popupElement) {
   popupElement.classList.add("popup_opened");
-  document.addEventListener("keydown", handleEscapeKey);
+  document.addEventListener("keydown", handleEscKey);
 }
 
-function closePopup(popupElement) {
+function closePopup(popupElement, validatorsList) {
   popupElement.classList.remove("popup_opened");
-  document.removeEventListener("keydown", handleEscapeKey);
   const form = popupElement.querySelector("form");
   if (form) {
-    formResetValidation(form, config);
+    form.reset();
+  }
+  document.removeEventListener("keydown", handleEscKey);
+  if (validatorsList) {
+    validatorsList.forEach((validator) => validator.formResetValidation());
   }
 }
 
@@ -29,10 +43,4 @@ document.querySelectorAll(".popup").forEach((popup) => {
   });
 });
 
-function handleCardClick(name, link) {
-  modalImage.src = link;
-  modalImage.alt = name;
-  openPopup(imagePopup);
-}
-
-export { openPopup, closePopup, handleCardClick };
+export { openPopup, closePopup };
