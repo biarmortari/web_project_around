@@ -1,4 +1,4 @@
-import { FormValidator } from "./validate.js";
+import { FormValidator } from "./FormValidator.js";
 
 const handleEscKey = (evt) => {
   if (evt.key === "Escape") {

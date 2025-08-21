@@ -1,6 +1,6 @@
 import { openPopup, closePopup } from "./utils.js";
 import { Card } from "./card.js";
-import { FormValidator } from "./validate.js";
+import { FormValidator } from "./FormValidator.js";
 
 const editButton = document.querySelector(".profile__button-edit");
 const addButton = document.querySelector(".profile__button-add");
@@ -83,10 +83,14 @@ function prependCard(cardElement) {
   elements.prepend(cardElement);
 }
 
-initialCards.forEach((data) => {
+function createAndPrependCard(data) {
   const card = new Card(data, "#card-template", handleCardClick);
   const cardElement = card.generateCard();
   prependCard(cardElement);
+}
+
+initialCards.forEach((data) => {
+  createAndPrependCard(data);
 });
 
 const formElementImage = document.querySelector(".popup__form_image");
@@ -102,10 +106,7 @@ function handleImageFormSubmit(evt) {
     link: linkInput.value,
   };
 
-  const card = new Card(data, "#card-template", handleCardClick);
-  const cardElement = card.generateCard();
-
-  prependCard(cardElement);
+  createAndPrependCard(data);
 
   formElementImage.reset();
   closePopup(editImagePopup, [profileFormValidator, cardFormValidator]);
@@ -129,13 +130,6 @@ const config = {
   inputErrorClass: "popup__input_type_error",
   errorClass: "popup__error_visible",
 };
-
-/*const forms = Array.from(document.querySelectorAll(config.formSelector));*/
-
-/*forms.forEach((form) => {
-  const validator = new FormValidator(config, form);
-  validator.enableValidation();
-});*/
 
 const cardFormValidator = new FormValidator(
   config,
