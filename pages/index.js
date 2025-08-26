@@ -1,6 +1,6 @@
-import { openPopup, closePopup } from "./utils.js";
-import { Card } from "./card.js";
-import { FormValidator } from "./FormValidator.js";
+import { openPopup, closePopup } from "../scripts/utils.js";
+import { Card } from "../scripts/card.js";
+import { FormValidator } from "../scripts/FormValidator.js";
 
 const editButton = document.querySelector(".profile__button-edit");
 const addButton = document.querySelector(".profile__button-add");
