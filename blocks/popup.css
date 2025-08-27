@@ -52,6 +52,13 @@
   display: block;
 }
 
+.modal__caption {
+  color: white;
+  font-size: 12px;
+  margin-top: 10px;
+  text-align: left;
+}
+
 .popup__form {
   display: flex;
   flex-direction: column;
