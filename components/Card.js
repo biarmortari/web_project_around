@@ -1,10 +1,12 @@
 export default class Card {
-  constructor(data, templateSelector, handleCardClick) {
+  constructor(data, templateSelector, handleCardClick, userId) {
+    this._card = data;
     this._link = data.link;
     this._local = data.local;
     this._templateSelector = templateSelector;
     this._cardElement = this._getTemplate();
     this._handleCardClick = handleCardClick;
+    this._userId = userId;
   }
 
   _getTemplate() {
@@ -14,7 +16,11 @@ export default class Card {
   }
 
   _setEventListeners() {
-    this._trashButton.addEventListener("click", (evt) => this._handleDelete());
+    if (this._trashButton) {
+      this._trashButton.addEventListener("click", (evt) =>
+        this._handleDelete()
+      );
+    }
     this._likeButton.addEventListener("click", (evt) => this._handleLike());
     this._cardImage.addEventListener("click", () =>
       this._handleCardClick(this._local, this._link)
@@ -37,9 +43,18 @@ export default class Card {
   generateCard() {
     this._cardImage = this._cardElement.querySelector(".element__image");
     this._cardText = this._cardElement.querySelector(".element__text");
-    this._trashButton = this._cardElement.querySelector(
-      ".element__trash-button"
-    );
+    if (this._card.owner === this._userId) {
+      this._trashButton = this._cardElement.querySelector(
+        ".element__trash-button"
+      );
+    } else {
+      const trashButton = this._cardElement.querySelector(
+        ".element__trash-button"
+      );
+      if (trashButton) {
+        trashButton.remove();
+      }
+    }
     this._likeButton = this._cardElement.querySelector(".element__like-button");
     this._likeImage = this._likeButton.querySelector(".element__like-image");
 

@@ -57,7 +57,7 @@ addCardPopup.setEventListeners();
 
 const userInfo = new UserInfo({
   nameSelector: ".profile__text-name",
-  jobSelector: ".profile__text-description",
+  aboutSelector: ".profile__text-description",
 });
 
 const initialCards = [
