@@ -1,12 +1,21 @@
 export default class Card {
-  constructor(data, templateSelector, handleCardClick, userId) {
+  constructor(
+    data,
+    templateSelector,
+    userId,
+    handleCardClick,
+    handleDeleteClick
+  ) {
     this._card = data;
     this._link = data.link;
-    this._local = data.local;
+    this._local = data.name;
+    this._cardId = data._id;
+    this._ownerId = data.owner;
     this._templateSelector = templateSelector;
+    this._userId = userId;
     this._cardElement = this._getTemplate();
     this._handleCardClick = handleCardClick;
-    this._userId = userId;
+    this._handleDeleteClick = handleDeleteClick;
   }
 
   _getTemplate() {
@@ -16,19 +25,15 @@ export default class Card {
   }
 
   _setEventListeners() {
-    if (this._trashButton) {
-      this._trashButton.addEventListener("click", (evt) =>
-        this._handleDelete()
-      );
-    }
     this._likeButton.addEventListener("click", (evt) => this._handleLike());
     this._cardImage.addEventListener("click", () =>
       this._handleCardClick(this._local, this._link)
     );
-  }
-
-  _handleDelete() {
-    this._cardElement.remove();
+    if (this._trashButton) {
+      this._trashButton.addEventListener("click", () =>
+        this._handleDeleteClick(this._cardId, this._cardElement)
+      );
+    }
   }
 
   _handleLike() {
@@ -43,17 +48,13 @@ export default class Card {
   generateCard() {
     this._cardImage = this._cardElement.querySelector(".element__image");
     this._cardText = this._cardElement.querySelector(".element__text");
-    if (this._card.owner === this._userId) {
-      this._trashButton = this._cardElement.querySelector(
-        ".element__trash-button"
-      );
-    } else {
-      const trashButton = this._cardElement.querySelector(
-        ".element__trash-button"
-      );
-      if (trashButton) {
-        trashButton.remove();
-      }
+    this._trashButton = this._cardElement.querySelector(
+      ".element__trash-button"
+    );
+    console.log(this._ownerId, this._userId);
+    if (this._ownerId !== this._userId) {
+      this._trashButton.remove();
+      this._trashButton = null;
     }
     this._likeButton = this._cardElement.querySelector(".element__like-button");
     this._likeImage = this._likeButton.querySelector(".element__like-image");

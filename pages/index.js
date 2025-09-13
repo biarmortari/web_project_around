@@ -4,6 +4,7 @@ import PopupWithForm from "../components/PopupWithForm.js";
 import PopupWithImage from "../components/PopupWithImage.js";
 import Section from "../components/Section.js";
 import UserInfo from "../components/UserInfo.js";
+import Api from "../components/Api.js";
 
 const editButton = document.querySelector(".profile__button-edit");
 const addButton = document.querySelector(".profile__button-add");
@@ -17,28 +18,7 @@ const config = {
   errorClass: "popup__error_visible",
 };
 
-// CALLBACK
-function createCard(data) {
-  const card = new Card(data, "#card-template", handleCardClick);
-  return card.generateCard();
-}
-
-function handleProfileFormSubmit(data) {
-  userInfo.setUserInfo(data);
-  editProfilePopup.close();
-}
-
-function handleImageFormSubmit(data) {
-  const cardElement = createCard(data);
-  cardList.addItem(cardElement, true);
-  addCardPopup.close();
-}
-
-function handleCardClick(local, link) {
-  popupWithImage.open(local, link);
-}
-
-// INSTÂNCIAS
+// POPUPS e USERINFO
 
 const popupWithImage = new PopupWithImage("#popup-image");
 popupWithImage.setEventListeners();
@@ -60,45 +40,102 @@ const userInfo = new UserInfo({
   aboutSelector: ".profile__text-description",
 });
 
-const initialCards = [
-  {
-    local: "Vale de Yosemite",
-    link: "https://practicum-content.s3.us-west-1.amazonaws.com/web-code/moved_yosemite.jpg",
-  },
-  {
-    local: "Lago Louise",
-    link: "https://practicum-content.s3.us-west-1.amazonaws.com/web-code/moved_lake-louise.jpg",
-  },
-  {
-    local: "Montanhas Carecas",
-    link: "https://practicum-content.s3.us-west-1.amazonaws.com/web-code/moved_bald-mountains.jpg",
-  },
-  {
-    local: "Latemar",
-    link: "https://practicum-content.s3.us-west-1.amazonaws.com/web-code/moved_latemar.jpg",
-  },
-  {
-    local: "Parque Nacional da Vanoise ",
-    link: "https://practicum-content.s3.us-west-1.amazonaws.com/web-code/moved_vanoise.jpg",
-  },
-  {
-    local: "Lago di Braies",
-    link: "https://practicum-content.s3.us-west-1.amazonaws.com/web-code/moved_lago.jpg",
-  },
-];
+// INSTÂNCIA DA API
 
-const cardList = new Section(
-  {
-    items: initialCards,
-    renderer: (data) => {
-      const card = createCard(data);
-      return card;
-    },
+const api = new Api({
+  baseUrl: "https://around-api.pt-br.tripleten-services.com/v1",
+  headers: {
+    authorization: "f4170781-0bdc-4b82-8946-9d7c4033b446",
+    //"Content-Type": "application/json",
   },
-  ".elements"
-);
+});
 
-cardList.renderItems();
+let userId;
+let cardList;
+
+Promise.all([api.getUserInfo(), api.getInitialCards()])
+  .then(([userData, cardsData]) => {
+    userId = userData._id;
+    userInfo.setUserInfo(userData);
+    cardList = new Section(
+      {
+        items: cardsData,
+        renderer: (data) => {
+          const card = createCard(data, userId);
+          return card;
+        },
+      },
+      ".elements"
+    );
+
+    cardList.renderItems();
+  })
+  .catch((err) => {
+    console.log(err);
+  });
+
+// CALLBACK
+
+function handleDeleteClick(cardId, cardElement) {
+  api
+    .deleteCard(cardId)
+    .then(() => {
+      cardElement.remove();
+    })
+    .then(() => {
+      console.log("Deletado com sucesso");
+    })
+    .catch((err) => {
+      console.log(err);
+    });
+}
+
+function createCard(data, userId) {
+  api
+    .addCard(data)
+    .then((res) => {
+      const card = new Card(
+        res,
+        "#card-template",
+        userId,
+        handleCardClick,
+        handleDeleteClick
+      );
+      cardList.addItem(card.generateCard());
+    })
+    .catch((err) => {
+      console.log(err);
+    });
+}
+
+function handleProfileFormSubmit(data) {
+  api
+    .updateUserInfo(data)
+    .then((res) => {
+      userInfo.setUserInfo(res);
+      editProfilePopup.close();
+    })
+    .catch((err) => {
+      console.log(err);
+    });
+}
+
+function handleImageFormSubmit(data) {
+  api
+    .addCard(data)
+    .then((newCardData) => {
+      const cardElement = createCard(newCardData, userId);
+      cardList.addItem(cardElement);
+      addCardPopup.close();
+    })
+    .catch((err) => {
+      console.log(err);
+    });
+}
+
+function handleCardClick(local, link) {
+  popupWithImage.open(local, link);
+}
 
 // OUVINTES
 
