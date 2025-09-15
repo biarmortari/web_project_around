@@ -2,6 +2,7 @@ import Card from "../components/Card.js";
 import FormValidator from "../components/FormValidator.js";
 import PopupWithForm from "../components/PopupWithForm.js";
 import PopupWithImage from "../components/PopupWithImage.js";
+import PopupWithConfirmation from "../components/PopupWithConfirmation.js";
 import Section from "../components/Section.js";
 import UserInfo from "../components/UserInfo.js";
 import Api from "../components/Api.js";
@@ -40,6 +41,11 @@ const userInfo = new UserInfo({
   aboutSelector: ".profile__text-description",
 });
 
+const popupWithConfirmation = new PopupWithConfirmation(
+  "#popup__form_confirmation"
+);
+popupWithConfirmation.setEventListeners();
+
 // INSTÂNCIA DA API
 
 const api = new Api({
@@ -77,17 +83,20 @@ Promise.all([api.getUserInfo(), api.getInitialCards()])
 // CALLBACK
 
 function handleDeleteClick(cardId, cardElement) {
-  api
-    .deleteCard(cardId)
-    .then(() => {
-      cardElement.remove();
-    })
-    .then(() => {
-      console.log("Deletado com sucesso");
-    })
-    .catch((err) => {
-      console.log(err);
-    });
+  popupWithConfirmation.setSubmitAction(() => {
+    api
+      .deleteCard(cardId)
+      .then(() => {
+        cardElement.remove();
+      })
+      .then(() => {
+        console.log("Deletado com sucesso");
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  });
+  popupWithConfirmation.open();
 }
 
 function createCard(data, userId) {
