@@ -41,9 +41,7 @@ const userInfo = new UserInfo({
   aboutSelector: ".profile__text-description",
 });
 
-const popupWithConfirmation = new PopupWithConfirmation(
-  "#popup__form_confirmation"
-);
+const popupWithConfirmation = new PopupWithConfirmation("#popup-confirmation");
 popupWithConfirmation.setEventListeners();
 
 // INSTÂNCIA DA API
