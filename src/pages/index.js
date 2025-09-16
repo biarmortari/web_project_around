@@ -50,18 +50,28 @@ const api = new Api({
   baseUrl: "https://around-api.pt-br.tripleten-services.com/v1",
   headers: {
     authorization: "42415dc5-0398-42c7-ace6-6f8ebb09a884",
-    //"Content-Type": "application/json",
+    "Content-Type": "application/json",
   },
 });
 
 let userId;
-let cardList;
+
+const cardList = new Section(
+  {
+    renderer: (data) => {
+      cardList.addItem(createCard(data));
+    },
+  },
+  ".elements"
+);
 
 api.getAppInfo().then(([cards, userData]) => {
   console.log(cards);
   console.log(userData);
   userData.description = userData.about;
+
   userInfo.setUserInfo(userData);
+  cardList.renderItems(cards);
 });
 
 // CALLBACK
@@ -108,22 +118,10 @@ function handleImageFormSubmit(data) {
     });
 }
 
-/*function createCard(data, userId) {
-  const card = new Card(
-    data,
-    "#card-template",
-    userId,
-    handleCardClick,
-    handleDeleteClick
-  );
-  const cardElement = card.generateCard();
-  return cardElement;
-}*/
-
 const createCard = (data) => {
   return new Card(data, "#card-template", () =>
     imagePopup.open(data)
-  ).getView();
+  ).generateCard();
 };
 
 function handleCardClick(local, link) {
