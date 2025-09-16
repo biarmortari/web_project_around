@@ -10,7 +10,7 @@ export default class Card {
     this._link = data.link;
     this._local = data.name;
     this._cardId = data._id;
-    this._ownerId = data.owner;
+    this._owner = data.owner;
     this._templateSelector = templateSelector;
     this._userId = userId;
     this._cardElement = this._getTemplate();
@@ -52,7 +52,7 @@ export default class Card {
     this._trashButton = this._cardElement.querySelector(
       ".element__trash-button"
     );
-    console.log(this._ownerId, this._userId);
+    console.log(this._owner, this._userId);
     if (this._ownerId !== this._userId) {
       this._trashButton.remove();
       this._trashButton = null;

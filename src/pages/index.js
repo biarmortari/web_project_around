@@ -119,8 +119,12 @@ function handleImageFormSubmit(data) {
 }
 
 const createCard = (data) => {
-  return new Card(data, "#card-template", () =>
-    imagePopup.open(data)
+  return new Card(
+    data,
+    "#card-template",
+    userId,
+    handleCardClick,
+    handleDeleteClick
   ).generateCard();
 };
 
