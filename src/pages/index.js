@@ -37,8 +37,8 @@ const addCardPopup = new PopupWithForm(
 addCardPopup.setEventListeners();
 
 const userInfo = new UserInfo({
-  nameSelector: ".profile__text-name",
-  aboutSelector: ".profile__text-description",
+  userNameSelector: ".profile__text-name",
+  userDescriptionSelector: ".profile__text-description",
 });
 
 const popupWithConfirmation = new PopupWithConfirmation("#popup-confirmation");
@@ -49,7 +49,7 @@ popupWithConfirmation.setEventListeners();
 const api = new Api({
   baseUrl: "https://around-api.pt-br.tripleten-services.com/v1",
   headers: {
-    authorization: "f4170781-0bdc-4b82-8946-9d7c4033b446",
+    authorization: "42415dc5-0398-42c7-ace6-6f8ebb09a884",
     //"Content-Type": "application/json",
   },
 });
@@ -57,26 +57,12 @@ const api = new Api({
 let userId;
 let cardList;
 
-Promise.all([api.getUserInfo(), api.getInitialCards()])
-  .then(([userData, cardsData]) => {
-    userId = userData._id;
-    userInfo.setUserInfo(userData);
-    cardList = new Section(
-      {
-        items: cardsData,
-        renderer: (data) => {
-          const card = createCard(data, userId);
-          return card;
-        },
-      },
-      ".elements"
-    );
-
-    cardList.renderItems();
-  })
-  .catch((err) => {
-    console.log(err);
-  });
+api.getAppInfo().then(([cards, userData]) => {
+  console.log(cards);
+  console.log(userData);
+  userData.description = userData.about;
+  userInfo.setUserInfo(userData);
+});
 
 // CALLBACK
 
@@ -95,24 +81,6 @@ function handleDeleteClick(cardId, cardElement) {
       });
   });
   popupWithConfirmation.open();
-}
-
-function createCard(data, userId) {
-  api
-    .addCard(data)
-    .then((res) => {
-      const card = new Card(
-        res,
-        "#card-template",
-        userId,
-        handleCardClick,
-        handleDeleteClick
-      );
-      cardList.addItem(card.generateCard());
-    })
-    .catch((err) => {
-      console.log(err);
-    });
 }
 
 function handleProfileFormSubmit(data) {
@@ -139,6 +107,24 @@ function handleImageFormSubmit(data) {
       console.log(err);
     });
 }
+
+/*function createCard(data, userId) {
+  const card = new Card(
+    data,
+    "#card-template",
+    userId,
+    handleCardClick,
+    handleDeleteClick
+  );
+  const cardElement = card.generateCard();
+  return cardElement;
+}*/
+
+const createCard = (data) => {
+  return new Card(data, "#card-template", () =>
+    imagePopup.open(data)
+  ).getView();
+};
 
 function handleCardClick(local, link) {
   popupWithImage.open(local, link);

@@ -23,6 +23,10 @@ export default class Api {
     }).then(this._checkResponse);
   }
 
+  getAppInfo() {
+    return Promise.all([this.getInitialCards(), this.getUserInfo()]);
+  }
+
   updateUserInfo(data) {
     return fetch(`${this._baseUrl}/users/me`, {
       method: "PATCH",
@@ -40,7 +44,7 @@ export default class Api {
       method: "POST",
       headers: this._headers,
       body: JSON.stringify({
-        name: data.name,
+        name: data.local,
         link: data.link,
       }),
     }).then(this._checkResponse);
