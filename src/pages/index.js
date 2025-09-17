@@ -9,6 +9,7 @@ import Api from "../components/Api.js";
 
 const editButton = document.querySelector(".profile__button-edit");
 const addButton = document.querySelector(".profile__button-add");
+const avatarButton = document.querySelector(".profile__button-avatar");
 
 const config = {
   formSelector: ".popup__form",
@@ -36,9 +37,16 @@ const addCardPopup = new PopupWithForm(
 );
 addCardPopup.setEventListeners();
 
+const editAvatarPopup = new PopupWithForm(
+  "#popup-edit-avatar",
+  handleAvatarFormSubmit
+);
+editAvatarPopup.setEventListeners();
+
 const userInfo = new UserInfo({
   userNameSelector: ".profile__text-name",
   userDescriptionSelector: ".profile__text-description",
+  avatarSelector: ".profile__avatar",
 });
 
 const popupWithConfirmation = new PopupWithConfirmation("#popup-confirmation");
@@ -105,6 +113,18 @@ function handleProfileFormSubmit(data) {
     });
 }
 
+function handleAvatarFormSubmit(data) {
+  api
+    .updateAvatar(data)
+    .then((res) => {
+      userInfo.setUserAvatar(res);
+      editAvatarPopup.close();
+    })
+    .catch((err) => {
+      console.log(err);
+    });
+}
+
 function handleImageFormSubmit(data) {
   api
     .addCard(data)
@@ -141,6 +161,10 @@ editButton.addEventListener("click", () => {
 
 addButton.addEventListener("click", () => {
   addCardPopup.open();
+});
+
+avatarButton.addEventListener("click", () => {
+  editAvatarPopup.open();
 });
 
 // VALIDAÇÃO
