@@ -35,6 +35,10 @@
   height: 180px;
 }
 
+.popup__container_avatar {
+  height: 280px;
+}
+
 .popup__container-image {
   padding: 0;
   background-color: transparent;
@@ -85,6 +89,10 @@
   margin: 0;
 }
 
+.popup__input::placeholder {
+  font-size: 14px;
+}
+
 .popup__input_type_error {
   color: #ff0000;
   border-bottom: 1px solid #ff0000;
@@ -115,6 +123,10 @@
   margin-top: 30px;
   font-size: 20px;
   font-weight: 500;
+}
+
+.popup__save-button_avatar {
+  margin-top: 60px;
 }
 
 .popup__save-button_disabled {
@@ -159,7 +171,8 @@
   opacity: 0.6;
 }
 
-.popup-confirmation {
+.popup-confirmation,
+.popup-edit-avatar {
   justify-content: center;
   align-items: center;
   font-family: "Inter", sans-serif;
