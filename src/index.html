@@ -240,6 +240,43 @@
         </form>
       </div>
     </div>
+    <div class="popup popup-avatar" id="popup-avatar">
+      <div class="popup__container">
+        <button class="popup__close-button" type="button">
+          <picture>
+            <source
+              media="(max-width: 601px)"
+              srcset="./images/close-button-mobile.svg"
+            />
+            <img
+              class="popup__close-button-icon"
+              src="./images/close-button.svg"
+              alt="Botao de fechar"
+            />
+          </picture>
+        </button>
+        <form
+          class="popup__form popup__form_avatar"
+          id="popup__form_avatar"
+          name="popup__form_avatar"
+        >
+          <h2 class="popup__title">Alterar foto de perfil</h2>
+
+          <label for="link" class="popup__label"></label>
+          <input
+            type="url"
+            id="avatar"
+            name="avatar"
+            class="popup__input"
+            placeholder="Link da foto de perfil"
+            required
+          />
+          <span id="link-error" class="popup__error"></span>
+
+          <button type="submit" class="popup__save-button">Salvar</button>
+        </form>
+      </div>
+    </div>
     <script type="module" src="./pages/index.js"></script>
   </body>
 </html>
