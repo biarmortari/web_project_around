@@ -84,7 +84,7 @@ function handleDeleteClick(cardId, cardElement) {
         cardElement.remove();
       })
       .then(() => {
-        console.log("Deletado com sucesso");
+        popupWithConfirmation.close();
       })
       .catch((err) => {
         console.log(err);
