@@ -6,8 +6,48 @@
   padding-top: 5%;
 }
 
-.profile__image {
-  max-width: 20%;
+.profile__avatar {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: opacity 0.3s ease;
+}
+
+.profile__avatar-container {
+  position: relative;
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  overflow: hidden;
+}
+
+.profile__button-avatar {
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+}
+
+.profile__edit-icon {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 26px;
+  height: 26px;
+  background-image: url("../images/edit-avatar-button.svg");
+  background-size: contain;
+  background-repeat: no-repeat;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.profile__avatar-container:hover .profile__avatar {
+  opacity: 0.2;
+}
+
+.profile__avatar-container:hover .profile__edit-icon {
+  opacity: 1;
 }
 
 .profile__info {
