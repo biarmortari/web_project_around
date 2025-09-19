@@ -29,7 +29,6 @@ export default class Card {
   }
 
   _setEventListeners() {
-    console.log(this._local, this._link);
     this._likeButton.addEventListener("click", (evt) =>
       this._handleLikeClick(this._cardId, this._isLiked, this)
     );
@@ -65,7 +64,6 @@ export default class Card {
     this._trashButton = this._cardElement.querySelector(
       ".element__trash-button"
     );
-    console.log(this._owner, this._userId);
     if (this._ownerId !== this._userId) {
       this._trashButton.remove();
       this._trashButton = null;

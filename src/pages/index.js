@@ -74,8 +74,6 @@ const cardList = new Section(
 );
 
 api.getAppInfo().then(([cards, userData]) => {
-  console.log(cards);
-  console.log(userData);
   userData.description = userData.about;
 
   userInfo.setUserInfo(userData);

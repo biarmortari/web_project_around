@@ -39,7 +39,6 @@ export default class Api {
   }
 
   addCard(data) {
-    console.log(data);
     return fetch(`${this._baseUrl}/cards`, {
       method: "POST",
       headers: this._headers,
@@ -73,7 +72,6 @@ export default class Api {
   }
 
   deleteCard(cardId) {
-    console.log("O cardId que estou tentando deletar é:", cardId);
     return fetch(`${this._baseUrl}/cards/${cardId}`, {
       method: "DELETE",
       headers: this._headers,
@@ -81,7 +79,6 @@ export default class Api {
   }
 
   updateAvatar(data) {
-    console.log(data);
     return fetch(`${this._baseUrl}/users/me/avatar`, {
       method: "PATCH",
       headers: this._headers,
