@@ -4,9 +4,11 @@ Explore e compartilhe momentos ao redor do mundo.
 
 ## Descrição do Projeto
 
-Esse projeto faz parte da **7ª a 9ª sprint** do bootcamp de Desenvolvimento Web da TripleTen.
+Esse projeto faz parte da **7ª a 12ª sprint** do bootcamp de Desenvolvimento Web da TripleTen.
 
 É uma landing page interativa para compartilhar fotos de diferentes lugares do mundo. A ideia é permitir que os usuários criem um perfil, adicionem imagens com legenda e link, curtam e excluam cartões — tudo com JavaScript puro, sem frameworks.
+
+Na última sprint, o projeto foi conectado ao servidor da TripleTen, ganhando persistência de dados e funcionalidades completas de CRUD (Create, Read, Update, Delete).
 
 Além da interação básica, o projeto foca em reforçar boas práticas de:
 
@@ -27,28 +29,28 @@ Além da interação básica, o projeto foca em reforçar boas práticas de:
 ✅ Estrutura de código modular com ES Modules
 ✅ Reset automático do formulário e da validação ao fechar pop-ups
 
+## Integração com API
+
+✅ Carregamento de informações do usuário do servidor
+✅ Carregamento de cartões do servidor
+✅ Edição de perfil com persistência
+✅ Adição de novos cartões ao servidor
+✅ Exclusão de cartões com pop-up de confirmação
+✅ Alternar curtidas em cartões
+✅ Atualização da foto do perfil
+
 ## Desafios enfrentados
 
-Este projeto marcou minha primeira experiência prática estruturando JavaScript de forma modular.
-
-Os principais desafios foram:
-
-- Criar pop-ups dinâmicos que funcionam bem em diferentes tamanhos de tela
-- Implementar validação de formulários com feedback visual customizado
-- Aprender a usar módulos ES (export e import) para organizar funções reutilizáveis
-- Garantir que o estado do formulário fosse resetado corretamente ao abrir e fechar os pop-ups
+Este projeto marcou minha primeira experiência prática estruturando JavaScript de forma modular e integrando um backend.
 
 ## Possíveis melhorias
 
-Atualmente, o projeto funciona como uma landing page estática com elementos interativos — mas ainda não salva dados de forma persistente.
+Atualmente, o projeto funciona com persistência básica, mas ainda pode evoluir:
 
-Como próximas etapas, planejo:
-
-- Implementar um backend com conexão a banco de dados para armazenar perfis, imagens e curtidas
-- Adicionar um sistema de autenticação com registro e login
-- Criar rotas e um menu de navegação para diferentes páginas/seções
+- Criar um sistema de autenticação completo (registro/login)
+- Adicionar rotas e um menu de navegação para diferentes páginas/seções
 - Melhorar a UI/UX com animações e feedbacks mais ricos
-- Tornar o projeto totalmente responsivo e acessível
+- Tornar o projeto totalmente acessível e ainda mais responsivo
 
 ## Visite o site ao vivo
 
