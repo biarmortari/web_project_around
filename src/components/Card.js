@@ -3,6 +3,7 @@ export default class Card {
     data,
     templateSelector,
     userId,
+    handleLikeClick,
     handleCardClick,
     handleDeleteClick
   ) {
@@ -11,9 +12,12 @@ export default class Card {
     this._local = data.name;
     this._cardId = data._id;
     this._owner = data.owner;
+    this._likes = data.likes;
+    this._isLiked = data.isLiked;
     this._templateSelector = templateSelector;
     this._userId = userId;
     this._cardElement = this._getTemplate();
+    this._handleLikeClick = handleLikeClick;
     this._handleCardClick = handleCardClick;
     this._handleDeleteClick = handleDeleteClick;
   }
@@ -26,7 +30,9 @@ export default class Card {
 
   _setEventListeners() {
     console.log(this._local, this._link);
-    this._likeButton.addEventListener("click", (evt) => this._handleLike());
+    this._likeButton.addEventListener("click", (evt) =>
+      this._handleLikeClick(this._cardId, this._isLiked, this)
+    );
     this._cardImage.addEventListener("click", () =>
       this._handleCardClick(this._local, this._link)
     );
@@ -37,13 +43,20 @@ export default class Card {
     }
   }
 
-  _handleLike() {
-    this._likeButton.classList.toggle("active");
-    if (this._likeButton.classList.contains("active")) {
+  _updateLikeButton() {
+    if (this._isLiked) {
       this._likeImage.src = "./images/like-button-active.svg";
+      this._likeButton.classList.add("active");
     } else {
       this._likeImage.src = "./images/like-button.svg";
+      this._likeButton.classList.remove("active");
     }
+  }
+
+  setLikes(cardData) {
+    this._likes = cardData.likes;
+    this._isLiked = cardData.isLiked;
+    this._updateLikeButton();
   }
 
   generateCard() {
@@ -63,6 +76,8 @@ export default class Card {
     this._cardImage.src = this._link;
     this._cardImage.alt = this._local;
     this._cardText.textContent = this._local;
+
+    this._updateLikeButton();
 
     this._setEventListeners();
 

@@ -102,6 +102,7 @@ function handleDeleteClick(cardId, cardElement) {
 }
 
 function handleProfileFormSubmit(data) {
+  editProfilePopup.setLoading(true);
   api
     .updateUserInfo(data)
     .then((res) => {
@@ -110,10 +111,14 @@ function handleProfileFormSubmit(data) {
     })
     .catch((err) => {
       console.log(err);
+    })
+    .finally(() => {
+      editProfilePopup.setLoading(false);
     });
 }
 
 function handleAvatarFormSubmit(data) {
+  editAvatarPopup.setLoading(true);
   api
     .updateAvatar(data)
     .then((res) => {
@@ -122,16 +127,34 @@ function handleAvatarFormSubmit(data) {
     })
     .catch((err) => {
       console.log(err);
+    })
+    .finally(() => {
+      editAvatarPopup.setLoading(false);
     });
 }
 
 function handleImageFormSubmit(data) {
+  addCardPopup.setLoading(true);
   api
     .addCard(data)
     .then((newCardData) => {
       const cardElement = createCard(newCardData, userId);
       cardList.addItem(cardElement);
       addCardPopup.close();
+    })
+    .catch((err) => {
+      console.log(err);
+    })
+    .finally(() => {
+      addCardPopup.setLoading(false);
+    });
+}
+
+function handleLikeClick(cardId, isLiked, cardInstance) {
+  api
+    .updateLike(cardId, !isLiked)
+    .then((updateCard) => {
+      cardInstance.setLikes(updateCard);
     })
     .catch((err) => {
       console.log(err);
@@ -143,6 +166,7 @@ const createCard = (data) => {
     data,
     "#card-template",
     userId,
+    handleLikeClick,
     handleCardClick,
     handleDeleteClick
   ).generateCard();
